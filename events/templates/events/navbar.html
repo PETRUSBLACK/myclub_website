@@ -20,8 +20,10 @@
           </li>
 
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" method="post" action="{% url 'Search-venus' %}">
+          {% csrf_token %}
+
+          <input class="form-control me-2" type="search" placeholder="Search Venue" aria-label="Search" name="searched">
           <button class="btn btn-outline-success nav-text" type="submit">Search</button>
         </form>
       </div>
