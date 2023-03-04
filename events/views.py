@@ -8,16 +8,27 @@ from .models import Event, Venue
 from .forms import VenueForm, EventForm
 now = datetime.now()
 
-# def Update_venue(request, venue_id):
-#     venue = Venue.objects.get(pk=venue_id)
-#     form = VenueForm(request.POST or None, instance=venue)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('list-venues')
-#     return render(request, 'events/update_venue.html',  {
-#         'venue' : venue,
-#         'form' : form
-#     })
+def Update_event(request, venue_id):
+    event = Event.objects.get(pk=venue_id)
+    form = EventForm(request.POST or None, instance=event)
+    if form.is_valid():
+        form.save()
+        return redirect('list-events')
+    return render(request, 'events/update_event.html',  {
+        'event' : event,
+        'form' : form
+    })
+
+def Update_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    form = VenueForm(request.POST or None, instance=venue)
+    if form.is_valid():
+        form.save()
+        return redirect('list-venues')
+    return render(request, 'events/update_venue.html',  {
+        'venue' : venue,
+        'form' : form
+    })
 def add_event(request):
     submitted = False
     if request.method == "POST":
